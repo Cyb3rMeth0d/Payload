@@ -1,1 +1,15 @@
-
+{
+  "name": "Mis aplicaciones",
+  "icons_url": "https://USUARIO.github.io/REPOSITORIO/icons.json",
+  "payloads": [
+    {
+      "id": "app-a",
+      "name": "Aplicación A",
+      "filename": "app-a.elf",
+      "url": "https://github.com/USUARIO/REPO-A/releases/download/v1.0/app-a.elf",
+      "source": "https://github.com/USUARIO/REPO-A",
+      "icon_key": "app-a",
+      "version": "1.0.0"
+    }
+  ]
+}
