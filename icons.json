@@ -1,5 +1,7 @@
+// icons.json
 {
   "icons": {
-    "app-a": "data:image/png;base64,PEGA_AQUI_EL_BASE64_DEL_LOGO"
+    "app-a": "data:image/png;base64,BASE64_DEL_LOGO_A",
+    "app-b": "data:image/png;base64,BASE64_DEL_LOGO_B"
   }
 }
