@@ -1,21 +1,13 @@
-// payloads.json
 {
-  "name": "Mis aplicaciones",
-  "icons_url": "https://USUARIO.github.io/REPOSITORIO/icons.json",
-  "payloads": [
-    {
-      "id": "app-a",
-      "name": "Aplicación A",
-      "filename": "app-a.elf",
-      "url": "https://github.com/USUARIO/REPO-A/releases/download/v1.0/app-a.elf",
-      "icon_key": "app-a"
-    },
-    {
-      "id": "app-b",
-      "name": "Aplicación B",
-      "filename": "app-b.elf",
-      "url": "https://github.com/USUARIO/REPO-B/releases/download/v1.0/app-b.elf",
-      "icon_key": "app-b"
-    }
-  ]
-}
+    "name": "PS5 WebKit Autoloader V.1b",
+    "filename": "webkit-autoloader-installer_v1b.elf",
+    "url": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b/releases/tag/PS5",
+    "source": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b",
+    "source_direct": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b/releases/download/PS5/webkit-autoloader-installer_v1b.elf",
+    "description": "Exploit WebKit automatizado de Cyb3rMeth0d: activa el jailbreak y carga los payloads en tu PS5 en un solo clic.",
+    "last_update": "2026-11-19",
+    "version": "V.1b",
+    "category": "Exploits y Hosts",
+    "checksum": "sha256:d130aa0b0f3a12b106ccdcf6ccd398f1bf93bcc2579513d8fac7e784a32a1231",
+    "icon_key": "REEMPLAZAR_CON_SHA256_DEL_ICONO"
+  }
