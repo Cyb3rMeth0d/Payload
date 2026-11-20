@@ -3,11 +3,13 @@
   "icons_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Payload/refs/heads/main/icons.json",
   "payloads": [
     {
+      "id": "webkit-autoloader-installer",
       "name": "WebKit Autoloader V.1b",
       "filename": "webkit-autoloader-installer_v1b.elf",
       "url": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b/releases/download/PS5/webkit-autoloader-installer_v1b.elf",
       "source": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b",
-      "source_direct": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b/releases/download/PS5/webkit-autoloader-installer_v1b.elf",
+      "details_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V1b/main/README.md",
+      "author": "Cyb3rMeth0d",
       "description": "Exploit WebKit automatizado de Cyb3rMeth0d: activa el jailbreak y carga los payloads en tu PS5 en un solo clic.",
       "last_update": "2026-11-19",
       "version": "V.1b",
