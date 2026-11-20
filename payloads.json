@@ -1,6 +1,6 @@
 {
   "name": "PS5 Payloads",
-  "icons_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Payload/refs/heads/main/icons.json",
+  "icons_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Payload/refs/heads/main/icons/icons",
   "payloads": [
     {
       "id": "webkit-autoloader-installer",
