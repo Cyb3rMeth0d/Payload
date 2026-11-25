@@ -7,7 +7,7 @@
       "name": "WebKit Autoloader V.2b",
       "filename": "webkit-autoloader-installer_v2b.elf",
       "url": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V2b/releases/tag/PS5-ELF",
-      "source": "https://raw.githubusercontent.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V2b/main/webkit-autoloader-installer_v2b.elf",
+      "source": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V2b/raw/refs/heads/main/webkit-autoloader-installer_v2b.elf",
       "details_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V2b/main/README.md",
       "author": "Cyb3rMeth0d",
       "description": "Exploit WebKit automatizado de Cyb3rMeth0d: activa el jailbreak y carga los payloads en tu PS5 en un solo clic.",
