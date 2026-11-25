@@ -15,24 +15,22 @@
       "version": "V.2b",
       "category": "Exploits y Hosts",
       "checksum": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572",
-      "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572",
-
-        "icons_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Payload/main/icons/icons.json",
-  "payloads": [
+      "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572"
+    },
     {
       "id": "nexus_payload_system_v2.0",
       "name": "Nexus Payload System V2.0",
       "filename": "nexuspayload.elf",
-      "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/tag/PS5",
+      "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
       "source": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
-      "details_url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0",
+      "details_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/main/README.md",
       "author": "Cyb3rMeth0d",
-      "description": "NexusPayload V2.0 es una herramienta ligera y optimizada para la administración de procesos abiertos y la gestión dinámica de payloads en tiempo real. Permite supervisar el sistema, seleccionar procesos activos y cargar o descargar módulos de forma rápida, estable y centralizada",
+      "description": "NexusPayload V2.0 es una herramienta ligera y optimizada para la administración de procesos abiertos y la gestión dinámica de payloads en tiempo real. Permite supervisar el sistema, seleccionar procesos activos y cargar o descargar módulos de forma rápida, estable y centralizada.",
       "last_update": "2026-11-25",
       "version": "V2.0",
       "category": "Exploits y Hosts",
       "checksum": "467f6a113f983c4f7ba83d5ced9d897e79ff31d008cfe598fb7832b60b148c63",
-      "icon_key": "467f6a113f983c4f7ba83d5ced9d897e79ff31d008cfe598fb7832b60b148c63",
+      "icon_key": "467f6a113f983c4f7ba83d5ced9d897e79ff31d008cfe598fb7832b60b148c63"
     }
   ]
 }
