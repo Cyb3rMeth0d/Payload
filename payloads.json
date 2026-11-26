@@ -3,7 +3,6 @@
   "icons_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Payload/main/icons/icons.json",
   "payloads": [
     {
-      "id": "webkit-autoloader-installer_v2b",
       "name": "WebKit Autoloader V.2b",
       "filename": "webkit-autoloader-installer_v2b.elf",
       "url": "https://github.com/Cyb3rMeth0d/PS5-WebKit-Autoloader-V2b/releases/download/PS5-ELF/webkit-autoloader-installer_v2b.elf",
@@ -18,8 +17,7 @@
       "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572"
     },
     {
-      "id": "nexus_payload_system_v20",
-      "name": "Nexus Payload System V2.0",
+      "name": "Nexus_Payload_System_V2.0",
       "filename": "nexuspayload.elf",
       "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
       "source": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
