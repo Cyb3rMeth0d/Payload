@@ -17,17 +17,17 @@
       "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572"
     },
     {
-      "name": "garlic-savemgr",
-      "filename": "garlic-savemgr_v2.0.elf",
-      "url": "https://github.com/itsPLK/ps5-payloads-mirror/releases/download/payloads-mirror/garlic-savemgr_v2.0.elf",
-      "source": "https://git.etawen.dev/earthonion/garlic-savemgr/releases",
-      "source_direct": "https://git.etawen.dev/earthonion/garlic-savemgr/releases/download/v2.0/garlic-savemgr.elf",
-      "description": "PS5 save decrypt/encrypt/browse with embedded web UI.",
-      "last_update": "2026-11-20",
-      "version": "v2.0",
-      "category": "Utilities & Tools",
-      "checksum": "805902a1ef3d54854850518b11602e0ab973192e0338fc30b28a3a9e4aae5be6",
-      "icon_key": "2cc3ca2be798749bb50ba4dc2afcb00a321542352e95087aa89b0e53c9b3e2ed"
+      "name": "FtpSv-Cyb3r V.1a",
+      "filename": "ftpsrv-ps5.elf",
+      "url": "https://github.com/Cyb3rMeth0d/FtpSrv-Cyb3r/releases/download/PS5/ftpsrv-ps5.elf",
+      "source": "https://github.com/Cyb3rMeth0d/FtpSrv-Cyb3r/releases/download/PS5/ftpsrv-ps5.elf",
+      "source_direct": "https://github.com/Cyb3rMeth0d/FtpSrv-Cyb3r",
+      "description": "Servidor FTP ligero y de alto rendimiento diseñado para PlayStation 5. Permite transferir archivos, copias de seguridad y homebrew de forma rápida y estable a través de tu red local.",
+      "last_update": "2026-11-26",
+      "version": "v.1a",
+      "category": "Exploits y Hosts",
+      "checksum": "3d10822f9cadf0eb5dc4c0f44b35188a32573f9d316c99f1efcf61c15fc7dc99",
+      "icon_key": "3d10822f9cadf0eb5dc4c0f44b35188a32573f9d316c99f1efcf61c15fc7dc99"
     }
   ]
 }
