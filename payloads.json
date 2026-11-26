@@ -17,18 +17,17 @@
       "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572"
     },
     {
-      "name": "Nexus Payload System V2.0",
-      "filename": "nexuspayload.elf",
-      "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
-      "source": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
-      "details_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/main/README.md",
-      "author": "Cyb3rMeth0d",
-      "description": "NexusPayload V2.0 es una herramienta ligera y optimizada para la administración de procesos abiertos y la gestión dinámica de payloads en tiempo real.",
-      "last_update": "2026-11-25",
-      "version": "V2.0",
-      "category": "Utilidades",
-      "checksum": "467f6a113f983c4f7ba83d5ced9d897e79ff31d008cfe598fb7832b60b148c63",
-      "icon_key": "467f6a113f983c4f7ba83d5ced9d897e79ff31d008cfe598fb7832b60b148c63"
+      "name": "garlic-savemgr",
+      "filename": "garlic-savemgr_v2.0.elf",
+      "url": "https://github.com/itsPLK/ps5-payloads-mirror/releases/download/payloads-mirror/garlic-savemgr_v2.0.elf",
+      "source": "https://git.etawen.dev/earthonion/garlic-savemgr/releases",
+      "source_direct": "https://git.etawen.dev/earthonion/garlic-savemgr/releases/download/v2.0/garlic-savemgr.elf",
+      "description": "PS5 save decrypt/encrypt/browse with embedded web UI.",
+      "last_update": "2026-11-20",
+      "version": "v2.0",
+      "category": "Utilities & Tools",
+      "checksum": "805902a1ef3d54854850518b11602e0ab973192e0338fc30b28a3a9e4aae5be6",
+      "icon_key": "2cc3ca2be798749bb50ba4dc2afcb00a321542352e95087aa89b0e53c9b3e2ed"
     }
   ]
 }
