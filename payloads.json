@@ -17,9 +17,9 @@
       "icon_key": "b44e54281091f6c3a27fe6703177f86422b2b097858a32cf53674c4d9e4c9572"
     },
     {
-      "name": "Nexus_Payload_System_V2.0",
+      "name": "Nexus Payload System V2.0",
       "filename": "nexuspayload.elf",
-      "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
+      "url": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/tag/PS5",
       "source": "https://github.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/releases/download/PS5/nexuspayload.elf",
       "details_url": "https://raw.githubusercontent.com/Cyb3rMeth0d/Nexus-Payload-System-V2.0/main/README.md",
       "author": "Cyb3rMeth0d",
