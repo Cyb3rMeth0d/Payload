@@ -36,10 +36,10 @@
       "source": "https://github.com/drakmor/ShadowMountPlus/releases",
       "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta12/ShadowMountPlus_1.7beta12.zip",
       "extract_file": "shadowmountplus.elf",
-      "description": "A fully automated, background 'Auto-Mounter' payload for Jailbroken PlayStation 5 consoles.",
+      "description": "Un *payload* de montaje automático (*Auto-Mounter*) que funciona en segundo plano y de forma totalmente automatizada para consolas PlayStation 5 con *jailbreak*.",
       "last_update": "2026-11-08",
       "version": "1.7beta12",
-      "category": "Utilities & Tools",
+      "category": "Utilidades & herramientas",
       "checksum": "8755172ec9bef1bff5453ea75606e0caf7c41b5963f94f5a1087e7e8c6d9b1bd",
       "icon_key": "2d83b692b57d424d0165cad9be37d9e0abe47a17dca0d7c6b9c05c30c4a0ab90"
     },
@@ -49,12 +49,25 @@
       "url": "https://github.com/itsPLK/ps5-payloads-mirror/releases/download/payloads-mirror/kstuff-lite_v1.11.elf",
       "source": "https://github.com/EchoStretch/kstuff-lite/releases",
       "source_direct": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.11/kstuff.elf",
-      "description": "Lite version of kstuff",
+      "description": "Versión ligera de kstuff",
       "last_update": "2026-09-20",
       "version": "v1.11",
-      "category": "System & Jailbreak",
+      "category": "Systema & Jailbreak",
       "checksum": "ab9a6cb4d3b1daf139d4d646e402b1cf569071acd64599c936d7a3a6164dc779",
       "icon_key": "bfb17e40ad9e638c1eaae93bc8d9a336dab35fd51eaeb7251f122e0b1fd53f8b"
-    }
+    },
+       {
+      "name": "ps5-linux-loader",
+      "filename": "ps5-linux-loader_v2.5.elf",
+      "url": "https://github.com/itsPLK/ps5-payloads-mirror/releases/download/payloads-mirror/ps5-linux-loader_v2.5.elf",
+      "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
+      "source_direct": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.5/ps5-linux-loader.elf",
+      "description": "Payload para Linux que implementa exploits de hipervisor (HV) para ejecutar un cargador de arranque personalizado",
+      "last_update": "2026-09-05",
+      "version": "v2.5",
+      "category": "Loaders",
+      "checksum": "9fc48733077145d1d204a4c9cdb879baaab1e711a604dd73af0dd4a807d6bc49",
+      "icon_key": "b3d73d513d62b4d6c880873e46cbea07b977c9bc03295c7e3a31e091fda7a8f7"
+    },
   ]
 }
